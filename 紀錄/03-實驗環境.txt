@@ -1,6 +1,6 @@
-硬體環境(MSI GS63 Stealth 8RE筆電)：
+硬體環境(MSI GS75 筆電)：
 CPU：Intel i7-8750H
-GPU：NVIDIA GeForce GTX 1060 (內存大小：6GB)
+GPU：NVIDIA GeForce GTX 1050ti (內存大小：4GB)
 RAM：16GB
 
 軟體環境：
