@@ -1,0 +1,60 @@
+(一).自製資料集(主要將raw data轉成aligned data)
+1)MTCNN人臉對齊(LFW資料集)
+LFW資料集來源：http://vis-www.cs.umass.edu/lfw/#download	選All images as gzipped tar file
+下指令的路徑：ROOT_PATH\facenet\src
+指令：python align\align_dataset_mtcnn.py datasets\lfw\raw datasets\lfw\lfw_mtcnnpy_160 --image_size 160 --margin 32 --random_order
+
+2)MTCNN人臉對齊(CASIA-WebFace資料集)
+CASIA-WebFace資料集來源：https://drive.google.com/u/0/uc?id=1Of_EVz-yHV7QVWQGihYfvtny9Ne8qXVz&export=download
+下指令的路徑：ROOT_PATH\facenet\src
+指令：python align\align_dataset_mtcnn.py datasets\casia\raw datasets\casia\casia_maxpy_mtcnnpy_182 --image_size 182 --margin 44
+
+----------以下可忽略不做-----------
+3)使用已有模型驗證LFW資料集準確率
+下指令的路徑：ROOT_PATH\facenet\src
+指令：python validate_on_lfw.py datasets\lfw\lfw_mtcnnpy_160 20180402-114759
+產生結果如下：
+	Accuracy: 0.98467+-0.00407
+	Validation rate: 0.90567+-0.01995 @ FAR=0.00067
+	Area Under Curve (AUC): 0.998
+	Equal Error Rate (EER): 0.015
+
+4)使用已有模型計算兩張人臉之間的距離
+下指令的路徑：ROOT_PATH\facenet\src
+指令：python compare.py 20180402-114759 Aaron_Peirsol_0002.jpg Aaron_Peirsol_0003.jpg Anthony_Hopkins_0001.jpg Anthony_Hopkins_0002.jpg
+產生結果如下：
+	Images:
+	0: Aaron_Peirsol_0002.jpg
+	1: Aaron_Peirsol_0003.jpg
+	2: Anthony_Hopkins_0001.jpg
+	3: Anthony_Hopkins_0002.jpg
+
+	Distance matrix
+	        0         1         2         3
+	0    1.0000    0.6527    0.3997    0.4003
+	1    0.6527    1.0000    0.3941    0.4049
+	2    0.3997    0.3941    1.0000    0.5636
+	3    0.4003    0.4049    0.5636    1.0000
+-------------------------------------
+
+(二).訓練模型
+下指令的路徑：ROOT_PATH\facenet\src
+
+指令[1]：
+python train_softmax.py --logs_base_dir ZJ/logs/facenet/ --models_base_dir ZJ/models/facenet/ --data_dir datasets/casia/casia_maxpy_mtcnnpy_182 --image_size 160 --model_def models.inception_resnet_v1 --lfw_dir datasets/lfw/lfw_mtcnnpy_160 --optimizer RMSPROP --learning_rate -1 --max_nrof_epochs 80 --keep_probability 0.8 --random_crop --random_flip --learning_rate_schedule_file learning_rate_schedule_classifier_casia.txt --weight_decay 5e-5 --center_loss_factor 1e-2 --center_loss_alfa 0.9
+
+產生結果如下：
+	Accuracy: 0.76083+-0.01421
+	Validation rate: 0.07800+-0.01392 @ FAR=0.00067
+
+註明[2]：
+--model_def modes.inception_resnet_v1 比較關鍵的一個參數，它指定了訓練的CNN的結構為inception_resnet_v1。項目支持的所有CNN結構在src/models目錄下。共支持inception_resnet_v1、inception_resnet_v2、squeezenet三個模型，其中前兩個模型較大，最後一個模型較小。如果使用--model_def modes.inception_resnet_v1後，出現內存或顯存消耗光的情況，可以將其替換為--model_def modes.squeezenet，來訓練一個較小的模型。
+
+參考：
+[1].https://blog.csdn.net/weixin_39911475/article/details/111902275
+[2].https://www.jianshu.com/p/a624e057d467
+
+(三).開啟TensorBoard去查詢訓練的紀錄資料
+下指令的路徑：ROOT_PATH\facenet\src
+
+指令：tensorboard --logdir ZJ\logs\facenet

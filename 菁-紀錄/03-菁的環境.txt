@@ -1,0 +1,100 @@
+硬體環境(MSI GS63 Stealth 8RE筆電)：
+CPU：Intel i7-8750H
+GPU：NVIDIA GeForce GTX 1060 (內存大小：6GB)
+RAM：16GB
+
+軟體環境：
+作業系統：Windows 10
+Anaconda版本：v4.10.3
+Python版本：v3.6.7
+CUDA版本：v10.0
+cuDNN版本：v7.6.1
+TensorFlow(GPU)版本：v1.14.0
+
+
+Package                         Version
+------------------------------- ---------
+absl-py                         0.15.0
+appdirs                         1.4.4
+astor                           0.8.1
+backcall                        0.2.0
+cached-property                 1.5.2
+certifi                         2021.5.30
+charset-normalizer              2.0.7
+click                           8.0.1
+colorama                        0.4.4
+contextlib2                     21.6.0
+Cython                          0.29.23
+dataclasses                     0.8
+decorator                       5.1.0
+deepface                        0.0.68
+distlib                         0.3.1
+dlib                            19.22.1
+entrypoints                     0.3
+Flask                           1.0.2
+gast                            0.5.2
+gdown                           3.13.0
+google-pasta                    0.2.0
+grpcio                          1.41.0
+h5py                            3.1.0
+idna                            3.3
+imageio                         2.9.0
+importlib-metadata              4.8.1
+importlib-resources             3.0.0
+imutils                         0.5.4
+ipykernel                       5.5.6
+ipython                         7.16.1
+ipython-genutils                0.2.0
+itsdangerous                    2.0.1
+jedi                            0.18.0
+Jinja2                          3.0.2
+joblib                          1.1.0
+jupyter-client                  7.0.6
+jupyter-core                    4.8.1
+Keras-Applications              1.0.8
+Keras-Preprocessing             1.1.2
+lxml                            4.6.3
+Markdown                        3.3.4
+MarkupSafe                      2.0.1
+mkl-fft                         1.2.0
+mkl-random                      1.1.1
+mkl-service                     2.3.0
+mtcnn                           0.1.1
+nest-asyncio                    1.5.1
+numpy                           1.16.2
+opencv-python                   4.5.3.56
+pandas                          1.1.5
+parso                           0.8.2
+pickleshare                     0.7.5
+Pillow                          8.4.0
+pip                             21.2.2
+prompt-toolkit                  3.0.20
+protobuf                        3.18.1
+Pygments                        2.10.0
+python-dateutil                 2.8.2
+pytz                            2021.1
+pywin32                         302
+pyzmq                           22.3.0
+requests                        2.26.0
+retina-face                     0.0.5
+scikit-learn                    0.24.2
+scipy                           1.1.0
+setuptools                      58.0.4
+six                             1.16.0
+sklearn                         0.0
+tensorboard                     1.14.0
+tensorflow-estimator            1.14.0
+tensorflow-gpu                  1.14.0
+tensorflow-object-detection-api 0.1.1
+termcolor                       1.1.0
+threadpoolctl                   3.0.0
+tornado                         6.1
+traitlets                       4.3.3
+typing-extensions               3.10.0.2
+urllib3                         1.26.7
+wcwidth                         0.2.5
+Werkzeug                        2.0.2
+wheel                           0.37.0
+wincertstore                    0.2
+wrapt                           1.13.2
+zipp                            3.6.0
